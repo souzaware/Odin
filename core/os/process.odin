@@ -421,6 +421,8 @@ process_exec :: proc(
 		process = process_start(desc) or_return
 	}
 
+	defer _ = process_close(process)
+
 	{
 		stdout_b: [dynamic]byte
 		stdout_b.allocator = allocator
